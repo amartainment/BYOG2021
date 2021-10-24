@@ -10,6 +10,10 @@ public class GameManager2D : MonoBehaviour
     public Transform world2D;
     public Transform startPosition;
     private float gravityMagnitude;
+    public GameManager manager3D;
+    public GameObject plinkoo3D;
+    public Transform exitBlock;
+    public EntryPortal entryPortal;
     void Start()
     {
         gravityMagnitude = Physics2D.gravity.magnitude;
@@ -29,5 +33,21 @@ public class GameManager2D : MonoBehaviour
     void CalculateRotationForce()
     {
 
+    }
+
+    public void addMoney(float amount)
+    {
+        manager3D.AddMoney(amount);
+        PushOut3DPlinkoo();
+    }
+
+    public void PushOut3DPlinkoo()
+    {
+        plinkoo3D.transform.position = exitBlock.transform.position;
+        plinkoo3D.SetActive(true);
+        
+        plinkoo3D.GetComponent<PlinkooBehavior>().GoToWait();
+        
+        entryPortal.RecordExit();
     }
 }

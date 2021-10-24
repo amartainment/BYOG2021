@@ -40,11 +40,14 @@ public class EntryPortal : MonoBehaviour
     void Consume3DBlock(GameObject plinkoo3D)
     {
         Rigidbody plinkoo_rb = plinkoo3D.GetComponent<Rigidbody>();
+        PlinkooBehavior behavior = plinkoo3D.GetComponent<PlinkooBehavior>();
+        behavior.GoToSuspend();
         plinkoo_rb.velocity = Vector3.zero;
         plinkoo_rb.transform.position = transform.position;
         consumedBlocks.Add(plinkoo3D);
         plinkoo3D.SetActive(false);
         myRenderer.material = inUseIndicator;
+        manager2D.plinkoo3D = plinkoo3D;
 
     }
 

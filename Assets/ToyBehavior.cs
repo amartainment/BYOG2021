@@ -6,6 +6,7 @@ public class ToyBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public float rotationSpeed = 20;
+    public bool suspended = false;
     void Start()
     {
         
@@ -14,13 +15,31 @@ public class ToyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetBoardRotation();
+        }
     }
 
     private void OnMouseDrag()
     {
+        suspended = true;
         CopiedMouseControls();
+      
     }
+
+    private void OnMouseUp()
+    {
+        suspended = false;
+        ResetBoardRotation();
+    }
+
+    void ResetBoardRotation()
+    {
+        
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     void CopiedMouseControls()
     {
         float rotationX = Input.GetAxis("Mouse X")*rotationSpeed*Mathf.Deg2Rad;
