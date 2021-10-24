@@ -24,13 +24,13 @@ public class CurrencyBank : MonoBehaviour
         
     }
 
-    public bool UseResource(PlinkooBehavior.Targets currency)
+    public bool UseResource(PlinkooBehavior.Targets currency, float amount)
     {
         if (currency == myCurrency)
         {
-            if (quantity > 0)
+            if (quantity >= amount)
             {
-                quantity--;
+                quantity-= amount;
                 inventoryText.text = quantity.ToString() + " " + "/ " + capacity.ToString();
                 return true;
             }
@@ -44,13 +44,13 @@ public class CurrencyBank : MonoBehaviour
         }
     }
 
-    public bool DepositResource(PlinkooBehavior.Targets currency)
+    public bool DepositResource(PlinkooBehavior.Targets currency, float amount)
     {
         if (currency == myCurrency)
         {
-            if (quantity < capacity)
+            if (quantity +amount  <= capacity )
             {
-                quantity++;
+                quantity+= amount;
                 inventoryText.text = quantity.ToString() + " " + "/ " + capacity.ToString();
                 return true;
             } else
@@ -62,4 +62,6 @@ public class CurrencyBank : MonoBehaviour
             return false;
         }
     }
+
+     
 }

@@ -130,7 +130,7 @@ public class PlinkooBehavior : MonoBehaviour
         if(activeTarget == Targets.food)
         {
             CurrencyBank currency = targetTransform.GetComponent<CurrencyBank>();
-            if(currency.UseResource(Targets.food))
+            if(currency.UseResource(Targets.food,1))
             {
                 overallHappiness += 0.2f;
                 food = 1;
@@ -146,7 +146,7 @@ public class PlinkooBehavior : MonoBehaviour
         if (activeTarget == Targets.water)
         {
             CurrencyBank currency = targetTransform.GetComponent<CurrencyBank>();
-            if (currency.UseResource(Targets.water))
+            if (currency.UseResource(Targets.water,1))
             {
                 overallHappiness += 0.2f;
                 water = 1;
@@ -164,7 +164,7 @@ public class PlinkooBehavior : MonoBehaviour
         if (activeTarget == Targets.potty)
         {
             CurrencyBank currency = targetTransform.GetComponent<CurrencyBank>();
-            if (currency.DepositResource(Targets.potty))
+            if (currency.DepositResource(Targets.potty,1))
             {
                 overallHappiness += 0.2f;
                 poop = 0;

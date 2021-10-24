@@ -26,17 +26,18 @@ public class GameManager : MonoBehaviour
         moneyUI.text = "$ "+money.ToString();
     }
 
-    public void SpendMoney(float amount)
+    public bool SpendMoney(float amount)
     {
         if(amount < money)
         {
             money -= amount;
             DisplayMoneyUI();
+            return true;
             
         } else
         {
             Debug.Log("Not enough money!");
-            
+            return false;
         }
     }
 
