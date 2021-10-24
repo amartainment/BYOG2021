@@ -15,14 +15,27 @@ public class ToyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetBoardRotation();
-        }
+        
+        IndependentMouseControls();
     }
 
+    void IndependentMouseControls()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            CopiedMouseControls();
+            suspended = true;
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            ResetBoardRotation();
+            suspended = false;
+        }
+    }
     private void OnMouseDrag()
     {
+        
         suspended = true;
         CopiedMouseControls();
       

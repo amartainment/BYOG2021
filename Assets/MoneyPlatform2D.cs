@@ -24,6 +24,7 @@ public class MoneyPlatform2D : MonoBehaviour
         if (collision.collider.CompareTag("plinkoo2D"))
         {
             manager2D.addMoney(moneyValue);
+            collision.collider.gameObject.transform.parent.gameObject.SetActive(false);
         }
     }
 }

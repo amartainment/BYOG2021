@@ -35,11 +35,13 @@ public class UIButtonBehavior : MonoBehaviour
             if (myCurrency.myCurrency == PlinkooBehavior.Targets.food)
             {
                 myCurrency.DepositResource(PlinkooBehavior.Targets.food,capacityIncrease);
+                myCurrency.capacity += capacityIncrease;
                 
             }
             if (myCurrency.myCurrency == PlinkooBehavior.Targets.water)
             {
                 myCurrency.DepositResource(PlinkooBehavior.Targets.water, capacityIncrease);
+                myCurrency.capacity += capacityIncrease;
 
             }
             if (myCurrency.myCurrency == PlinkooBehavior.Targets.potty)
